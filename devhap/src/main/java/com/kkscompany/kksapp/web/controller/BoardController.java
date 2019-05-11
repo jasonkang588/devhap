@@ -1,4 +1,4 @@
-package com.kkscompany.kksapp;
+package com.kkscompany.kksapp.web.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +23,9 @@ import com.kkscompany.kksapp.service.board.BoardService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class BoardController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
 	private BoardService boardService;
@@ -48,7 +50,26 @@ public class HomeController {
 		List result = boardService.selectList(param);
 		logger.info(result.toString());
 		
-		return "contacts/list";
+		return "board/list";
+	}
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/jsp/board/list", method = RequestMethod.GET)
+	public String board(Locale locale, Model model, HttpServletRequest req) {
+		
+		logger.info(req.getServerName());
+		
+		logger.info(req.getPathInfo());
+		
+		logger.info(req.getServletPath());
+		
+		logger.info(req.getContextPath());
+		
+		logger.info(req.getRequestURI());
+		
+		return "jsp/board/list";
 	}
 	
 }

@@ -8,12 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kkscompany.kksapp.HomeController;
 import com.kkscompany.kksapp.dao.CommonDao;
+import com.kkscompany.kksapp.web.controller.BoardController;
 
 @Service
 public class BoardService {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
 	CommonDao commonDao;
