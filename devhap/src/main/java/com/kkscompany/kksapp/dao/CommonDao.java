@@ -14,12 +14,22 @@ public class CommonDao {
 	
 	@Autowired
 	@Resource(name="sqlSession")
-	private SqlSessionTemplate sqlsession;
+	private SqlSessionTemplate sqlSession;
 	
-	@SuppressWarnings("unchecked")
 	public List selectList(String id, Map param) {
-		List result = sqlsession.selectList(id, param);
-		return result;
+		return sqlSession.selectList(id, param);
+	}
+	
+	public int insert(String id, Map param) {
+		return sqlSession.insert(id, param);
+	}
+	
+	public int update(String id, Map param) {
+		return sqlSession.update(id, param);
+	}
+	
+	public int delete(String id, Map param) {
+		return sqlSession.update(id, param);
 	}
 
 }

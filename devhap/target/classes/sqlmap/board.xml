@@ -3,6 +3,48 @@
 
 <mapper namespace="board">
 	<select id="selectList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select '1' as vCol1 from dual
+		SELECT ID         as "id"
+			 , TITLE      as "title"
+			 , CONTENT    as "content"
+			 , READ_COUNT as "readCount"
+			 , PARENT_ID  as "parentId"
+			 , REPLY_ID   as "replyId"
+			 , ATTACH_ID  as "attachId"
+			 , PASSWORD   as "password"
+			 , CRE_BY     as "creBy"
+			 , CRE_DT     as "creDt"
+			 , MOD_BY     as "modBy"
+			 , MOD_DT     as "modDt"
+		  FROM TB_TEST_BOARD
 	</select>
+	
+	<insert id="insertItem" parameterType="java.util.HashMap">
+		INSERT INTO TB_TEST_BOARD(
+			 ID
+			,TITLE
+			,CONTENT
+			,READ_COUNT
+			,PARENT_ID
+			,REPLY_ID
+			,ATTACH_ID
+			,PASSWORD
+			,CRE_BY
+			,CRE_DT
+			,MOD_BY
+			,MOD_DT
+		) VALUES (
+			 TEST_SEQ.NEXTVAL
+			,#{title}
+			,#{content}
+			,'0'
+			,#{parentId}
+			,#{replyId}
+			,#{attachId}
+			,#{password}
+			,#{creBy}
+			,#{creDt}
+			,#{modBy}
+			,#{modDt}	
+		)
+	</insert>
 </mapper>
