@@ -34,6 +34,12 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml" /> 
 		<!-- SQL 파일의 위치를 지정합니다. --> 
 		<property name="mapperLocations" value="classpath:sqlmap/*.xml" /> 
+		<property name="plugins">
+            <list>
+                <!-- 인터셉터 설정 -->
+                <bean class="com.kkscompany.kksapp.web.interceptor.RowBoundsInterceptor"/>
+            </list>
+        </property>
 	</bean>
 	
 	<!-- SqlSession --> 

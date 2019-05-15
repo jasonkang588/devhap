@@ -35,7 +35,7 @@ public class TestBoardController {
 	public ModelAndView getPosts(@RequestParam Map<String, Object> parameters) {
 		List param = new ArrayList<Map<String, Object>>();
 		param.add(parameters);
-		List result = testBoardService.findAll(param);
+		List result = testBoardService.findAllByPage(param);
 		
 		ModelAndView mv = new ModelAndView("jsp/board/list");
 		mv.addObject("list", result);
@@ -49,6 +49,17 @@ public class TestBoardController {
 		param.add(parameters);
 		testBoardService.regist(param);
 		return "jsp/board/list";
+	}
+	
+	@RequestMapping(value = "/editform", method = RequestMethod.GET)
+	public ModelAndView getEditForm(@RequestParam Map<String, Object> parameters) {
+		List param = new ArrayList<Map<String, Object>>();
+		param.add(parameters);
+		List result = testBoardService.findOne(param);
+		
+		ModelAndView mv = new ModelAndView("jsp/board/edit");
+		mv.addObject("list", result);
+		return mv;
 	}
 	
 	@RequestMapping(value = "/generate-test-data", method = RequestMethod.POST)

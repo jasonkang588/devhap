@@ -16,6 +16,20 @@
 			 , MOD_BY     as "modBy"
 			 , MOD_DT     as "modDt"
 		  FROM TB_TEST_BOARD
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="creBy != null and creBy !=''">
+				AND CRE_BY LIKE '%' || #{creBy} || '%'
+			</if>
+			<if test="creDt != null and creDt !=''">
+				AND to_char(CRE_BY, 'YYYYMMDD') = #{creDt}
+			</if>
+			<if test="title != null and title !=''">
+				AND TITLE LIKE '%' || #{id} || '%' 
+			</if>
+			<if test="content != null and content !=''">
+				AND CONTENT LIKE '%' || #{content} || '%' 
+			</if>			
+		</trim>
 	</select>
 	
 	<insert id="insertItem" parameterType="java.util.HashMap">
