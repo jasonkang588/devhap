@@ -35,10 +35,11 @@ public class TestBoardController {
 	public ModelAndView getPosts(@RequestParam Map<String, Object> parameters) {
 		List param = new ArrayList<Map<String, Object>>();
 		param.add(parameters);
-		List result = testBoardService.findAllByPage(param);
+		Map<String,Object> result = testBoardService.findAllByPage(param);
 		
 		ModelAndView mv = new ModelAndView("jsp/board/list");
-		mv.addObject("list", result);
+		mv.addObject("list", result.get("list"));
+		mv.addObject("paging", result.get("paging"));
 		
 		return mv;
 	}

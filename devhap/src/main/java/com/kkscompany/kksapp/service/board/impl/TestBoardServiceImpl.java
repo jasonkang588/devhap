@@ -51,40 +51,18 @@ public class TestBoardServiceImpl implements TestBoardService{
 		} else {
 			param = bizInDto.get(0);
 		}		
-		List result = commonDao.selectList("board.selectList", param); 
-		return result;
+		return commonDao.selectList("board.selectList", param);
 	}
 
 	@Override
-	public List findAllByPage(List<Map<String, Object>> bizInDto) {
-		Map param = null;
-		List result = null;
-		
+	public Map<String,Object> findAllByPage(List<Map<String, Object>> bizInDto) {
+		Map<String,Object> param = null;
 		if(bizInDto == null || bizInDto.isEmpty()) {
 			param = new HashMap<String,Object>();
 		} else {
 			param = bizInDto.get(0);
 		}
-		
-		if(param.get(CommonConstants.PARAM_NAME_CURRENT_PAGE) == null) {
-			param.put(CommonConstants.PARAM_NAME_CURRENT_PAGE, "1");
-		}
-		
-		result = commonDao.selectList("board.selectList", param);
-		
-		PagingCriteria pc = new PagingCriteria(
-			  Integer.parseInt((String) param.get(CommonConstants.PARAM_NAME_CURRENT_PAGE))
-			, ((BigDecimal)((Map)result.get(0)).get("totalCount")).intValue()
-			, 3, 10
-		);
-		
-		param.put(CommonConstants.PARAM_NAME_TOTAL_COUNT, pc.getTotalCount());
-		param.put(CommonConstants.PARAM_NAME_ROWBOUNDS_FROM, pc.getRowBoundsFrom());
-		param.put(CommonConstants.PARAM_NAME_ROWBOUNDS_TO, pc.getRowBoundsTo());		
-		
-		result = commonDao.selectList("board.selectList", param);
-		
-		return result;
+		return commonDao.selectListByPage("board.selectList", param);
 	}
 
 	@Override

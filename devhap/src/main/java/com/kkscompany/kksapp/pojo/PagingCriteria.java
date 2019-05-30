@@ -3,6 +3,8 @@ package com.kkscompany.kksapp.pojo;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.kkscompany.kksapp.constants.CommonConstants;
+
 public class PagingCriteria {	
 	private Integer fetchSize;		
 	private Integer blockSize;
@@ -17,8 +19,8 @@ public class PagingCriteria {
 	public PagingCriteria(Integer currentPage, Integer totalCount, Integer fetchSize, Integer blockSize) {		
 		this.currentPage = this.isValidParam(currentPage) ? currentPage : 1;		
 		this.totalCount  = this.isValidParam(totalCount)  ? totalCount  : 0;
-		this.fetchSize   = this.isValidParam(fetchSize)   ? fetchSize   : 1;
-		this.blockSize   = this.isValidParam(blockSize)   ? blockSize   : 1;
+		this.fetchSize   = this.isValidParam(fetchSize)   ? fetchSize   : CommonConstants.COMMON_FETCH_SIZE;
+		this.blockSize   = this.isValidParam(blockSize)   ? blockSize   : CommonConstants.COMMON_BLOCK_SIZE;
 		
 		this.makePagingCriteria();
 	}

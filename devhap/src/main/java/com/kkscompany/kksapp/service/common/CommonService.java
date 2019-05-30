@@ -9,5 +9,5 @@ public interface CommonService {
 	public void save(List<Map<String,Object>> bizInDto);
 	public List findOne(List<Map<String,Object>> bizInDto);
 	public List findAll(List<Map<String,Object>> bizInDto);
-	public List findAllByPage(List<Map<String,Object>> bizInDto);
+	public Map<String, Object> findAllByPage(List<Map<String,Object>> bizInDto);
 }

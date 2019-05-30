@@ -12,35 +12,43 @@
 		<button id="btn_search">조회</button>
 		<button id="btn_create">글쓰기</button>
 		
-		<table border="1" width="800px">
-			<colgroup>
-				<col width="10%" /> <!-- 번호 -->
-				<col width="*" />   <!-- 제목 -->
-				<col width="20%" /> <!-- 작성자 -->
-				<col width="15%" /> <!-- 작성일 -->
-				<col width="15%" /> <!-- 조회수 -->
-			</colgroup>
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일</th>
-					<th>조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="row" items="${list}">
+		<div>
+			<div>
+				<table border="1" width="800px">
+				<colgroup>
+					<col width="10%" /> <!-- 번호 -->
+					<col width="*" />   <!-- 제목 -->
+					<col width="20%" /> <!-- 작성자 -->
+					<col width="15%" /> <!-- 작성일 -->
+					<col width="15%" /> <!-- 조회수 -->
+				</colgroup>
+				<thead>
 					<tr>
-						<td style="text-align:center;">${row.id}</td>
-						<td><a href="#">${row.title}</a></td>
-						<td style="text-align:center;">${row.creBy}</td>
-						<td style="text-align:center;">${row.creDt}</td>
-						<td style="text-align:center;">${row.readCount}</td>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
 					</tr>
-				</c:forEach>				
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<c:forEach var="row" items="${list}">
+						<tr>
+							<td style="text-align:center;">${row.id}</td>
+							<td><a href="#">${row.title}</a></td>
+							<td style="text-align:center;">${row.creBy}</td>
+							<td style="text-align:center;">${row.creDt}</td>
+							<td style="text-align:center;">${row.readCount}</td>
+						</tr>
+					</c:forEach>				
+				</tbody>
+				</table>
+			</div>
+			<div>
+				
+			</div>
+		</div>
+		
 		
 		<script type="text/javascript">
 			var view = {
@@ -51,8 +59,8 @@
 					this.addEventListenerToComponents();
 				},
 				addEventListenerToComponents : function() {
-					var btnGenData = document.getElementById('btn_genData');
-					btnGenData.addEventListener('click', function(event) {
+					var btnGenData = document.getElementById("btn_genData");
+					btnGenData.addEventListener("click", function(event) {
 						boardUtil.formSubmit({
 							  formId : "frm_trans"
 							, action : "/test-board/generate-test-data"
@@ -60,8 +68,8 @@
 						});
 					});
 					
-					var btnSearch = document.getElementById('btn_search');
-					btnSearch.addEventListener('click', function(event) {
+					var btnSearch = document.getElementById("btn_search");
+					btnSearch.addEventListener("click", function(event) {
 						boardUtil.formSubmit({
 							  formId : "frm_trans"
 							, action : "/test-board/posts"
@@ -69,14 +77,16 @@
 						});
 					});
 					
-					$('#btn_create').on('click', function(event) {
-						location.href = '/resources/WEB-INF/views/jsp/board/regist.jsp';
+					$("#btn_create").on("click", function(event) {
+						location.href = "/resources/WEB-INF/views/jsp/board/regist.jsp";
 					});
 				}
 			}
 			
 			window.onload = function() {
-				view.init();		
+				view.init();
+				
+				var req = "${paging.fetchSize}";
 			}
 		</script> 
 	</body>
