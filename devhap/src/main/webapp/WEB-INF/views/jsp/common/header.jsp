@@ -31,7 +31,10 @@
         <link rel="stylesheet" type="text/css" media="screen" href="${jqgrid_css}" />
         <script type="text/javascript" src="${jqgrid_locale_url}"><jsp:text/></script> 
         <script type="text/javascript" src="${jqgrid_url}"><jsp:text/></script>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">			
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<!-- web socket -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.js"></script>			
 	</head>
 	<body>
 		<form id="frm_trans">

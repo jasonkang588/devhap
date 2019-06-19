@@ -9,6 +9,7 @@
 <body>
 	<h2>index</h2>
 	<a href="/kksapp/login">login page</a><br>
-	<a href="/kksapp/test-board/posts">test-board page</a>
+	<a href="/kksapp/test-board/posts">test-board page</a><br>
+	<a href="/kksapp/chat">chat page</a>
 </body>
 </html>
